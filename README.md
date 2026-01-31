@@ -2,13 +2,11 @@
 
 ![maplibre-gl-measures](https://raw.githubusercontent.com/jdsantos/maplibre-gl-measures/main/docs/screenshot.PNG)
 
-[![npm version](https://badge.fury.io/js/maplibre-gl-measures.svg)](https://badge.fury.io/js/maplibre-gl-measures)
-![npm downloads](https://img.shields.io/npm/dm/maplibre-gl-measures)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://img.shields.io/github/actions/workflow/status/jdsantos/maplibre-gl-measures/tests.yml?label=tests&style=round-square)](https://github.com/jdsantos/maplibre-gl-measures/actions?query=workflow%3ATests)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue)](https://www.typescriptlang.org/)
 
-A MapLibre GL JS plugin for taking length measurements with lines and area measurements with polygons.
+A MapLibre GL JS plugin for taking length measurements with lines and area measurements with polygons. A fork of [/jdsantos/maplibre-gl-measures](https://github.com/jdsantos/maplibre-gl-measures)
 
 This plugin works with [MapLibre GL JS](http://maplibre.org) and is inspired by the great work done by [mapbox/mapbox-gl-draw](https://github.com/mapbox/mapbox-gl-draw).
 
@@ -17,7 +15,7 @@ This plugin works with [MapLibre GL JS](http://maplibre.org) and is inspired by 
 - **Line Length Measurement**: Draw lines to measure distances
 - **Area Measurement**: Draw polygons to measure areas
 - **Multiple Unit Systems**: Support for both metric and imperial units
-- **Customizable Units**: Fixed units for length (mm, cm, m, km, in, ft, yd, mi) and area (mm², cm², m², km², ha, in², ft², yd², ac, mi²)
+- **Customizable Units**: Fixed units for length (mm, cm, m, km, in, ft, mi) and area (mm², cm², m², km², ha, in², ft², ac, mi²)
 - **Flexible Formatting**: Control number formatting with custom grouping separators and precision
 - **Styling Options**: Full customization of colors, line widths, fill opacity, and text styles
 - **Event Callbacks**: `onRender` and `onCreate` callbacks for handling drawn features
@@ -146,11 +144,12 @@ map.addControl(measuresControl, 'top-left');
 | `unitsGroupingSeparator`                 | `string`                 | `undefined`                   | Separator for number grouping (e.g., space instead of comma)                                        |
 | `minimumFractionDigits`                  | `number`                 | `2`                           | Minimum number of decimal places to display                                                         |
 | `maximumFractionDigits`                  | `number`                 | `2`                           | Maximum number of decimal places to display                                                         |
-| `fixedLengthUnit`                        | `string`                 | `undefined`                   | Fixed unit for length measurements: `mm`, `cm`, `m`, `km`, `in`, `ft`, `yd`, `mi`                   |
-| `fixedAreaUnit`                          | `string`                 | `undefined`                   | Fixed unit for area measurements: `mm2`, `cm2`, `m2`, `km2`, `ha`, `in2`, `ft2`, `yd2`, `ac`, `mi2` |
+| `fixedLengthUnit`                        | `string`                 | `undefined`                   | Fixed unit for length measurements: `mm`, `cm`, `m`, `km`, `in`, `ft`, `mi`                   |
+| `fixedAreaUnit`                          | `string`                 | `undefined`                   | Fixed unit for area measurements: `mm2`, `cm2`, `m2`, `km2`, `ha`, `in2`, `ft2`, `ac`, `mi2` |
 | `showOnlyTotalLineLength`                | `boolean`                | `true`                        | Show only total line length instead of each segment length                                          |
 | `style`                                  | `object`                 | `{}`                          | Styling options for measurements                                                                    |
-| `style.text`                             | `object`                 | `{}`                          | Text styling options                                                                                |
+| `style.text`                             | `object`                 | `{}`                          | Text styling options                                    |
+| `style.text.textSize`                      | `number (optional)`     | `{}`                          | Explicit text sizing                                                                                |
 | `style.text.radialOffset`                | `number`                 | `0.5`                         | Radial offset for text labels                                                                       |
 | `style.text.letterSpacing`               | `number`                 | `0.05`                        | Letter spacing for text labels                                                                      |
 | `style.text.color`                       | `string`                 | `'#D20C0C'`                   | Color of text labels                                                                                |
