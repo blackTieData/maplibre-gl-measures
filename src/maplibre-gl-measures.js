@@ -182,7 +182,7 @@ export default class MeasuresControl {
 			unit = this.options.fixedAreaUnit;
 		} else {
 			measure = convert(dist).from('m2').to('mi2');
-			measure = convert(measure).from('mi2').toBest({ system: 'imperial' });
+			measure = convert(measure).from('mi2').toBest({ system: 'imperial', exclude: ['yd2', 'in2'] });
 			unit = measure.unit;
 		}
 		let val = this._getLocaleNumber(measure.val || measure);
@@ -211,7 +211,7 @@ export default class MeasuresControl {
 			unit = this.options.fixedLengthUnit;
 		} else {
 			measure = convert(dist).from('m').to('mi');
-			measure = convert(measure).from('mi').toBest({ system: 'imperial' });
+			measure = convert(measure).from('mi').toBest({ system: 'imperial', exclude: ['yd', 'ft-us'] });
 			unit = measure.unit;
 		}
 		let val = this._getLocaleNumber(measure.val || measure);
@@ -344,21 +344,23 @@ export default class MeasuresControl {
 					'text-radial-offset': this.options?.style?.text?.radialOffset ?? 0.5,
 					'text-justify': 'auto',
 					'text-letter-spacing': this.options?.style?.text?.letterSpacing ?? 0.05,
-					'text-size': [
-						'interpolate',
-						['linear'],
-						['zoom'],
-						5,
-						10,
-						10,
-						12.0,
-						13,
-						14.0,
-						14,
-						16.0,
-						18,
-						18.0, // Change 15.0 to 10.0 or lower
-					],
+					'text-size': typeof this.options?.style?.text?.textSize === 'number'
+					  ? this.options.style.text.textSize
+					  : [
+						  'interpolate',
+						  ['linear'],
+						  ['zoom'],
+						  5,
+						  10,
+						  10,
+						  12.0,
+						  13,
+						  14.0,
+						  14,
+						  16.0,
+						  18,
+						  18.0,
+						],
 				},
 				paint: {
 					'text-color': this.options?.style?.text?.color ?? '#D20C0C',
